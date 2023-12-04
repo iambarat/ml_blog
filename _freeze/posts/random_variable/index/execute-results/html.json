@@ -1,0 +1,16 @@
+{
+  "hash": "81e1b90689ff3218de8030dda6bf3aed",
+  "result": {
+    "markdown": "---\ntitle: \"Understanding Random Variables\"\nformat: html\n---\n\n\n# Random Variables\n\n## Introduction\n\nIn this post, we'll explore the concept of random variables in the context of machine learning using Python. Understanding random variables is essential for grasping the fundamentals of probabilistic models and statistical methods in machine learning.\n\n### What is a Random Variable?\n\nA random variable is a variable whose possible values are numerical outcomes of a random phenomenon. In machine learning, they are key to modeling uncertainties and probabilities.\n\n## Simulating Random Variables in Python\n\nPython, with libraries like `numpy` and `matplotlib`, is a powerful tool for statistical simulations. Let's demonstrate this with some examples.\n\n### Discrete Random Variables\n\nFirst, we'll simulate a discrete random variable: the outcome of a dice roll.\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(reticulate)\nuse_python(\"/Users/bota/Files/VT/Course Materials/Fall 23/ML Blog/vscode/mlblog/bin/python\")\n```\n:::\n\n::: {.cell}\n\n```{.python .cell-code}\nimport numpy as np\nimport matplotlib.pyplot as plt\n\n# Setting a seed for reproducibility\nnp.random.seed(123)\n\n# Simulating dice rolls\ndice_rolls = np.random.choice([1, 2, 3, 4, 5, 6], size=1000)\n\n# Plotting the results\nplt.hist(dice_rolls, bins=np.arange(1, 8) - 0.5, rwidth=0.8)\nplt.title('Dice Roll Distribution')\nplt.xlabel('Dice Value')\nplt.ylabel('Frequency')\nplt.xticks(range(1, 7))\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n([<matplotlib.axis.XTick object at 0x16a5a67d0>, <matplotlib.axis.XTick object at 0x137d59c90>, <matplotlib.axis.XTick object at 0x16a5cb150>, <matplotlib.axis.XTick object at 0x16a5f0390>, <matplotlib.axis.XTick object at 0x16a5f4390>, <matplotlib.axis.XTick object at 0x16a5f6450>], [Text(1, 0, '1'), Text(2, 0, '2'), Text(3, 0, '3'), Text(4, 0, '4'), Text(5, 0, '5'), Text(6, 0, '6')])\n```\n:::\n\n```{.python .cell-code}\nplt.show()\n```\n\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-2-1.png){width=614}\n:::\n\n```{.python .cell-code}\n# Simulating a normal distribution\nnormal_data = np.random.normal(loc=0, scale=1, size=1000)\n\n# Plotting the results\nplt.hist(normal_data, bins=30, density=True, alpha=0.6, color='g')\nplt.title('Normal Distribution')\nplt.xlabel('Value')\nplt.ylabel('Density')\nplt.show()\n```\n\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-2-2.png){width=614}\n:::\n:::\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

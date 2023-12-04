@@ -56,4 +56,3 @@ plt.ylabel('Density')
 plt.show()
 
 ```
-
