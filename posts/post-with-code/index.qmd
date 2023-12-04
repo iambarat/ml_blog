@@ -1,9 +1,9 @@
 ---
-title: "Understanding Random Variables in Machine Learning"
+title: "Understanding Random Variables"
 format: html
 ---
 
-# Random Variables in Machine Learning
+# Random Variables
 
 ## Introduction
 
