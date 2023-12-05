@@ -1,0 +1,81 @@
+---
+title: "Exploring Linear and Non-Linear Regression in Python"
+author: "Mohaimin"
+date: "`r Sys.Date()`"
+format: html
+---
+
+# Introduction
+
+In the world of data science, regression analysis is a powerful tool for understanding relationships between variables. In this blog post, we'll explore two fundamental types: linear and non-linear regression. We'll use Python, a versatile programming language popular in data science, to demonstrate these concepts.
+
+## Setting Up the Environment
+
+Before diving into the regression analysis, ensure you have Python and necessary libraries installed. We'll use `scikit-learn`, a widely used machine learning library in Python. You can install it via pip:
+
+```{bash}
+pip install scikit-learn
+```
+
+## Linear Regression
+
+Linear regression is a method to model the relationship between a dependent variable and one or more independent variables. It assumes a linear relationship between the input (independent variables) and the output (dependent variable).
+
+### Example in Python
+```{python}
+import numpy as np
+from sklearn.linear_model import LinearRegression
+import matplotlib.pyplot as plt
+
+# Sample data
+x = np.array([5, 15, 25, 35, 45, 55]).reshape((-1, 1))
+y = np.array([5, 20, 14, 32, 22, 38])
+
+# Create a linear regression model
+model = LinearRegression()
+model.fit(x, y)
+
+# Make predictions
+x_pred = np.array([65, 75]).reshape((-1, 1))
+y_pred = model.predict(x_pred)
+
+# Plotting
+plt.scatter(x, y, color='blue')
+plt.plot(x_pred, y_pred, color='red')
+plt.title('Linear Regression Example')
+plt.xlabel('X')
+plt.ylabel('Y')
+plt.show()
+```
+
+## Non-linear Regression
+
+In contrast to linear regression, non-linear regression is used when the data shows a non-linear relationship. This means the change in the output is not proportional to the change in the input.
+
+```{python}
+from sklearn.preprocessing import PolynomialFeatures
+
+# Transforming the data to include non-linear elements
+polynomial_features = PolynomialFeatures(degree=2)
+x_poly = polynomial_features.fit_transform(x)
+
+# Creating a linear regression model to fit the polynomial features
+model = LinearRegression()
+model.fit(x_poly, y)
+
+# Make predictions with non-linear model
+x_poly_pred = polynomial_features.fit_transform(x_pred)
+y_poly_pred = model.predict(x_poly_pred)
+
+# Plotting
+plt.scatter(x, y, color='blue')
+plt.plot(x_pred, y_poly_pred, color='red')
+plt.title('Non-Linear Regression Example')
+plt.xlabel('X')
+plt.ylabel('Y')
+plt.show()
+```
+
+## Concusion
+
+In this post, we've seen how to implement both linear and non-linear regression models in Python. 

@@ -1,6 +1,8 @@
 ---
-title: "Understanding Random Variables"
-format: html
+title: "Random Variables"
+author: "Mohaimin"
+date: "2023-12-01"
+categories: [code]
 ---
 
 # Random Variables
@@ -20,11 +22,12 @@ Python, with libraries like `numpy` and `matplotlib`, is a powerful tool for sta
 ### Discrete Random Variables
 
 First, we'll simulate a discrete random variable: the outcome of a dice roll.
-
+<!--
 ```{r}
 library(reticulate)
 use_python("/Users/bota/Files/VT/Course Materials/Fall 23/ML Blog/vscode/mlblog/bin/python")
 ```
+-->
 
 ```{python}
 
