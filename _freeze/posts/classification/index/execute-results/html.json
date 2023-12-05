@@ -1,0 +1,11 @@
+{
+  "hash": "6094db8b432822a9ee6a562c7dcf959b",
+  "result": {
+    "markdown": "---\ntitle: \"Understanding Classification\"\nauthor: \"Mohaimin\"\ndate: \"`r Sys.Date()`\"\nformat: html\n---\n\n# Introduction to Classification in Machine Learning\n\nClassification is a cornerstone of machine learning, where we teach a computer how to make decisions from data. It involves categorizing data into predefined classes. In this post, we'll explore the basics of classification in machine learning using Python, a popular language in data science due to its simplicity and robust libraries.\n\n## Setting Up the Environment\n\nEnsure you have Python installed with the necessary libraries. We'll use `scikit-learn`, a powerful tool for machine learning in Python. Install it using pip if you haven't already:\n\n\n```{bash}\npip install scikit-learn\n```\n\n\n### Classification Basics\n\nClassification algorithms are used for tasks where the output variable is a category, such as \"spam\" or \"not spam\" in email filtering.\n\n### Types of Classification\n\n**Binary Classification:**\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

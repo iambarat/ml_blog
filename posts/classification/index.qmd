@@ -1,0 +1,94 @@
+---
+title: "Understanding Classification"
+author: "Mohaimin"
+date: "`r Sys.Date()`"
+format: html
+---
+
+# Introduction to Classification in Machine Learning
+
+Classification is a cornerstone of machine learning, where we teach a computer how to make decisions from data. It involves categorizing data into predefined classes. In this post, we'll explore the basics of classification in machine learning using Python, a popular language in data science due to its simplicity and robust libraries.
+
+## Setting Up the Environment
+
+Ensure you have Python installed with the necessary libraries. We'll use `scikit-learn`, a powerful tool for machine learning in Python. Install it using pip if you haven't already:
+
+```{bash}
+pip install scikit-learn
+```
+
+### Classification Basics
+
+Classification algorithms are used for tasks where the output variable is a category, such as "spam" or "not spam" in email filtering.
+
+### Types of Classification
+
+**Binary Classification:** Involves two classes. For example, determining whether an email is spam. 
+**Multiclass Classification:** Involves more than two classes. For instance, classifying types of crops.
+
+### Implementing Classification in Python
+
+We'll use the Iris dataset, a classic in machine learning, which includes data on various iris flowers and classifies them into three species.
+
+```{python}
+#loading dataset
+from sklearn.datasets import load_iris
+iris = load_iris()
+
+#splitting dataset
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(
+    iris.data, iris.target, test_size=0.3, random_state=42)
+
+#knn
+from sklearn.neighbors import KNeighborsClassifier
+knn = KNeighborsClassifier(n_neighbors=3)
+knn.fit(X_train, y_train)
+
+#knn_evaluation
+from sklearn.metrics import accuracy_score
+y_pred = knn.predict(X_test)
+accuracy = accuracy_score(y_test, y_pred)
+print(f"Accuracy: {accuracy:.2f}")
+
+
+### Decision Tree Classifier
+
+from sklearn.tree import DecisionTreeClassifier
+
+decision_tree = DecisionTreeClassifier()
+decision_tree.fit(X_train, y_train)
+
+#evaluation
+y_pred_dt = decision_tree.predict(X_test)
+accuracy_dt = accuracy_score(y_test, y_pred_dt)
+print(f"Decision Tree Accuracy: {accuracy_dt:.2f}")
+
+#support vector machine classifier
+from sklearn.svm import SVC
+
+#training
+svm = SVC()
+svm.fit(X_train, y_train)
+
+#evaluating
+y_pred_svm = svm.predict(X_test)
+accuracy_svm = accuracy_score(y_test, y_pred_svm)
+print(f"SVM Accuracy: {accuracy_svm:.2f}")
+
+
+# Logistic Regression
+from sklearn.linear_model import LogisticRegression
+
+log_reg = LogisticRegression(max_iter=200)
+log_reg.fit(X_train, y_train)
+
+# Evaluating
+y_pred_lr = log_reg.predict(X_test)
+accuracy_lr = accuracy_score(y_test, y_pred_lr)
+print(f"Logistic Regression Accuracy: {accuracy_lr:.2f}")
+```
+
+### Conclusion
+
+In this post, we've explored various classification algorithms, each with its unique strengths. Choosing the right classifier depends on the dataset's size, quality, and nature. Experimentation and cross-validation are key to determining the most effective model for your specific data.

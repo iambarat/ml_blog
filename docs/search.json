@@ -42,6 +42,20 @@
     "text": "Clustering is a type of unsupervised learning where we aim to identify natural groupings within a dataset. Unlike supervised learning, clustering does not require labeled data. Instead, it divides the data into clusters based on the inherent similarities between data points.\n\n\nOne of the most popular clustering algorithms is K-Means. K-Means partitions the data into ‘K’ clusters, with each cluster represented by its centroid. The algorithm iteratively assigns data points to the nearest centroid and updates the centroids until convergence.\nHere’s a Python example using scikit-learn to perform K-Means clustering:\n\n# Import necessary libraries\nimport numpy as np\nimport matplotlib.pyplot as plt\nfrom sklearn.cluster import KMeans\n\n# Generate random data for demonstration\ndata = np.random.rand(100, 2)\n\n# Create a K-Means model with 3 clusters\nkmeans = KMeans(n_clusters=3)\nkmeans.fit(data)\n\n# Visualize the clustering results\nplt.scatter(data[:, 0], data[:, 1], c=kmeans.labels_)\nplt.scatter(kmeans.cluster_centers_[:, 0], kmeans.cluster_centers_[:, 1], s=200, marker='X', c='red', label='Centroids')\nplt.title(\"K-Means Clustering\")\nplt.legend()\nplt.show()\n\n/Users/bota/Files/VT/Course Materials/Fall 23/ML Blog/vscode/mlblog/lib/python3.11/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning\n  super()._check_params_vs_input(X, default_n_init=10)"
   },
   {
+    "objectID": "posts/classification/index.html",
+    "href": "posts/classification/index.html",
+    "title": "Understanding Classification",
+    "section": "",
+    "text": "Classification is a cornerstone of machine learning, where we teach a computer how to make decisions from data. It involves categorizing data into predefined classes. In this post, we’ll explore the basics of classification in machine learning using Python, a popular language in data science due to its simplicity and robust libraries.\n\n\nEnsure you have Python installed with the necessary libraries. We’ll use scikit-learn, a powerful tool for machine learning in Python. Install it using pip if you haven’t already:\npip install scikit-learn\n\n\nClassification algorithms are used for tasks where the output variable is a category, such as “spam” or “not spam” in email filtering.\n\n\n\nBinary Classification:"
+  },
+  {
+    "objectID": "posts/classification/index.html#setting-up-the-environment",
+    "href": "posts/classification/index.html#setting-up-the-environment",
+    "title": "Understanding Classification",
+    "section": "",
+    "text": "Ensure you have Python installed with the necessary libraries. We’ll use scikit-learn, a powerful tool for machine learning in Python. Install it using pip if you haven’t already:\npip install scikit-learn\n\n\nClassification algorithms are used for tasks where the output variable is a category, such as “spam” or “not spam” in email filtering.\n\n\n\nBinary Classification:"
+  },
+  {
     "objectID": "posts/random_variable/index.html",
     "href": "posts/random_variable/index.html",
     "title": "Understanding Random Variables",
@@ -67,6 +81,6 @@
     "href": "index.html",
     "title": "Machine Learning Blog",
     "section": "",
-    "text": "Random Variables\n\n\n\n\n\n\n\ncode\n\n\n\n\n\n\n\n\n\n\n\nDec 1, 2023\n\n\nMohaimin\n\n\n\n\n\n\n  \n\n\n\n\nExploring Linear and Non-Linear Regression in Python\n\n\n\n\n\n\n\n\n\n\n\n\nInvalid Date\n\n\nMohaimin\n\n\n\n\n\n\n  \n\n\n\n\nClustering\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\nNo matching items"
+    "text": "Understanding Classification\n\n\n\n\n\n\n\n\n\n\n\n\nInvalid Date\n\n\nMohaimin\n\n\n\n\n\n\n  \n\n\n\n\nRandom Variables\n\n\n\n\n\n\n\ncode\n\n\n\n\n\n\n\n\n\n\n\nDec 1, 2023\n\n\nMohaimin\n\n\n\n\n\n\n  \n\n\n\n\nExploring Linear and Non-Linear Regression in Python\n\n\n\n\n\n\n\n\n\n\n\n\nInvalid Date\n\n\nMohaimin\n\n\n\n\n\n\n  \n\n\n\n\nClustering\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\nNo matching items"
   }
 ]
