@@ -32,7 +32,7 @@ The goal of K-means is to minimize the within-cluster variance, defined as:
 
 $$ W(C_k) = \sum_{x_i \in C_k} ||x_i - \mu_k||^2 $$
 
-where $ C_k $ is the \(k\)th cluster, $x_i$ is a data point, and $ \mu_k $ is the centroid of $ C_k $.
+where $C_k$ is the \(k\)th cluster, $x_i$ is a data point, and $\mu_k$ is the centroid of $C_k$.
 
 ### Python Example: Implementing K-Means using Iris dataset
 

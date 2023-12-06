@@ -14,7 +14,7 @@ In this blog, we'll dive deep into the world of anomaly detection, exploring its
 
 ## Fundamentals of Anomaly Detection
 
-Anomaly detection focuses on identifying data points, events, or observations that deviate significantly from the dataset's norm. Mathematically, if we consider a dataset $ D $ containing elements $ x_1, x_2, ..., x_n $, an anomaly $ x_i $ is a point that deviates significantly from the majority of points in $ D $.
+Anomaly detection focuses on identifying data points, events, or observations that deviate significantly from the dataset's norm. Mathematically, if we consider a dataset $D$ containing elements $x_1, x_2, ..., x_n$, an anomaly $x_i$ is a point that deviates significantly from the majority of points in $D$.
 
 ### Types of Anomalies
 
@@ -62,7 +62,7 @@ plt.show()
 ```
 In this example, the Isolation Forest algorithm efficiently separates the outliers from the normal observations.
 
-### KNN for anomaly detection
+### KNN for Anomaly Detection
 
 ```{python}
 import numpy as np

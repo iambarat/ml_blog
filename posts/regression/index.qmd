@@ -21,7 +21,7 @@ The linear regression model can be represented by:
 
 $$ y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + ... + \beta_n x_n + \epsilon $$
 
-where $ \beta_0, \beta_1, ..., \beta_n $ are coefficients, and $\epsilon$ is the error term.
+where $\beta_0, \beta_1, ..., \beta_n$ are coefficients, and $\epsilon$ is the error term.
 
 ### Python Example: Simple Linear Regression
 
