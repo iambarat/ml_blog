@@ -3,14 +3,14 @@ project:
   output-dir: docs
 
 website:
-  title: "blog_rstudio"
+  title: "Machine Learning Blog"
   navbar:
     right:
       - about.qmd
       - icon: github
-        href: https://github.com/
+        href: https://github.com/iambarat
       - icon: twitter
-        href: https://twitter.com
+        href: https://twitter.com/iambota_
 format:
   html:
     theme: solar

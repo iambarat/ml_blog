@@ -1,81 +1,92 @@
 ---
-title: "Exploring Linear and Non-Linear Regression in Python"
+title: "Exploring Linear and Non-Linear Regression"
 author: "Mohaimin"
-date: "`r Sys.Date()`"
+date: "2023-12-02"
 format: html
+categories: [code]
 ---
+
 
 # Introduction
 
-In the world of data science, regression analysis is a powerful tool for understanding relationships between variables. In this blog post, we'll explore two fundamental types: linear and non-linear regression. We'll use Python, a versatile programming language popular in data science, to demonstrate these concepts.
-
-## Setting Up the Environment
-
-Before diving into the regression analysis, ensure you have Python and necessary libraries installed. We'll use `scikit-learn`, a widely used machine learning library in Python. You can install it via pip:
-
-```{bash}
-pip install scikit-learn
-```
+Regression analysis is a powerful statistical method used for modeling the relationship between a dependent variable and one or more independent variables. In this blog post, we will explore two primary types of regression: linear and non-linear, using Python within the RStudio environment.
 
 ## Linear Regression
 
-Linear regression is a method to model the relationship between a dependent variable and one or more independent variables. It assumes a linear relationship between the input (independent variables) and the output (dependent variable).
+Linear regression is the most straightforward approach in regression analysis. It assumes a linear relationship between the input variables (independent) and the single output variable (dependent).
 
-### Example in Python
+### The Mathematical Model
+
+The linear regression model can be represented by:
+
+$$ y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + ... + \beta_n x_n + \epsilon $$
+
+where $ \beta_0, \beta_1, ..., \beta_n $ are coefficients, and $\epsilon$ is the error term.
+
+### Python Example: Simple Linear Regression
+
+Let's start with a simple example of linear regression with one independent variable.
+
 ```{python}
 import numpy as np
-from sklearn.linear_model import LinearRegression
 import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
 
 # Sample data
-x = np.array([5, 15, 25, 35, 45, 55]).reshape((-1, 1))
+X = np.array([[5], [15], [25], [35], [45], [55]])
 y = np.array([5, 20, 14, 32, 22, 38])
 
-# Create a linear regression model
+# Creating the linear regression model
 model = LinearRegression()
-model.fit(x, y)
+model.fit(X, y)
 
-# Make predictions
-x_pred = np.array([65, 75]).reshape((-1, 1))
-y_pred = model.predict(x_pred)
+# Predictions
+X_new = np.array([[65]])
+y_pred = model.predict(X_new)
 
 # Plotting
-plt.scatter(x, y, color='blue')
-plt.plot(x_pred, y_pred, color='red')
-plt.title('Linear Regression Example')
+plt.scatter(X, y, color='blue')
+plt.plot(X, model.predict(X), color='red')
+plt.scatter(X_new, y_pred, color='green')
+plt.title('Simple Linear Regression')
 plt.xlabel('X')
 plt.ylabel('Y')
 plt.show()
 ```
 
-## Non-linear Regression
+## Non Linear Regression
 
-In contrast to linear regression, non-linear regression is used when the data shows a non-linear relationship. This means the change in the output is not proportional to the change in the input.
+In contrast, non-linear regression is used when the data shows a more complex relationship that cannot be accurately described by a linear model.
+Non-linear regression can take many forms, one of which is the polynomial regression, represented by:
+$$ y = \beta_0 + \beta_1 x^1 + \beta_2 x^2 + ... + \beta_n x^n + \epsilon $$
+
+Below is an example of non linear regression using polynomial model. 
 
 ```{python}
 from sklearn.preprocessing import PolynomialFeatures
 
-# Transforming the data to include non-linear elements
+# Transforming the data
 polynomial_features = PolynomialFeatures(degree=2)
-x_poly = polynomial_features.fit_transform(x)
+X_poly = polynomial_features.fit_transform(X)
 
-# Creating a linear regression model to fit the polynomial features
+# Creating a linear regression model
 model = LinearRegression()
-model.fit(x_poly, y)
+model.fit(X_poly, y)
 
-# Make predictions with non-linear model
-x_poly_pred = polynomial_features.fit_transform(x_pred)
-y_poly_pred = model.predict(x_poly_pred)
+# Predictions
+X_new_poly = polynomial_features.fit_transform(X_new)
+y_poly_pred = model.predict(X_new_poly)
 
 # Plotting
-plt.scatter(x, y, color='blue')
-plt.plot(x_pred, y_poly_pred, color='red')
-plt.title('Non-Linear Regression Example')
+plt.scatter(X, y, color='blue')
+plt.plot(X, model.predict(X_poly), color='red')
+plt.scatter(X_new, y_poly_pred, color='green')
+plt.title('Polynomial Regression')
 plt.xlabel('X')
 plt.ylabel('Y')
 plt.show()
 ```
 
-## Concusion
+## Conclusion
 
-In this post, we've seen how to implement both linear and non-linear regression models in Python. 
+Understanding the difference between linear and non-linear regression is crucial for accurately modeling data in various fields. Python provides a versatile and approachable platform for implementing and visualizing both types of regression, making it an excellent choice for data scientists and statisticians.

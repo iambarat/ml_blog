@@ -1,21 +1,22 @@
 ---
-title: "Random Variables"
+title: "Random Variables and Probability Distribution"
 author: "Mohaimin"
 date: "2023-12-01"
 categories: [code]
 ---
 
-# Random Variables
+# Random Variables and Probability Distribution
 
 ## Introduction
 
-In this post, we'll explore the concept of random variables in the context of machine learning using Python. Understanding random variables is essential for grasping the fundamentals of probabilistic models and statistical methods in machine learning.
+Random variables and probability distribution are fundamental concepts in statistics, forming the backbone of data analysis and probabilistic modeling. In this blog, we explore these concepts including the basics, some examples, and visualization of the outputs.
 
-### What is a Random Variable?
+
+## Random Variable
 
 A random variable is a variable whose possible values are numerical outcomes of a random phenomenon. In machine learning, they are key to modeling uncertainties and probabilities.
 
-## Simulating Random Variables in Python
+### Simulating Random Variables in Python
 
 Python, with libraries like `numpy` and `matplotlib`, is a powerful tool for statistical simulations. Let's demonstrate this with some examples.
 
@@ -48,7 +49,7 @@ plt.ylabel('Frequency')
 plt.xticks(range(1, 7))
 plt.show()
 
-# Simulating a normal distribution
+# Simulating a normal distribution for continuous random variable
 normal_data = np.random.normal(loc=0, scale=1, size=1000)
 
 # Plotting the results
@@ -59,3 +60,94 @@ plt.ylabel('Density')
 plt.show()
 
 ```
+
+## Probability Distribution
+
+A probability function assigns probabilities to each possible outcome of a random experiment. The function must satisfy three conditions: non-negativity, normalization, and countable additivity.
+
+Mathematically, a probability function \( P \) for a random variable \( X \) is defined as:
+
+$$ P(X = x) \geq 0 $$
+
+$$ \sum P(X = x_i) = 1 $$
+
+Where $x_i$ are the possible outcomes of \( X \).
+
+Probability distributions describe the likelihood of each possible value of a random variable. There are two main types of probability distributions: discrete and continuous.
+
+## Probability Mass Function (PMF)
+
+The PMF is a function that describes the probabilities of different outcomes of a discrete random variable. The PMF assigns a value to each possible outcome, which represents the probability that the outcome will occur. The PMF is defined as the probability of a random variable taking on a particular value. The sum of all the PMF values is equal to 1, as the probability of the outcome must be 100%.
+
+### Example: PMF of a Fair Die Roll
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+
+# PMF of a fair die
+values = np.arange(1, 7)
+probabilities = np.full(6, 1/6)
+
+plt.bar(values, probabilities)
+plt.title('PMF of a Fair Die')
+plt.xlabel('Die Value')
+plt.ylabel('Probability')
+plt.show()
+```
+
+
+## Cumulative Density Function (CDF)
+
+The Cumulative Distribution Function (CDF) is a fundamental concept in probability theory that applies to both discrete and continuous random variables. It represents the probability that a random variable \(X\) will take on a value less than or equal to a specific value \(x\).
+$$F_X(x)=P(X\leq x)$$
+### Example: CDF of a Normal Distribution
+```{python}
+# CDF of a standard normal distribution
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.stats import norm
+
+x = np.linspace(-3, 3, 1000)
+y = norm.pdf(x, 0, 1)
+
+y_cdf = norm.cdf(x, 0, 1)
+
+plt.plot(x, y_cdf)
+plt.title('CDF of Standard Normal Distribution')
+plt.xlabel('Value')
+plt.ylabel('Cumulative Probability')
+plt.show()
+```
+
+
+## Probability Density Function (PDF)
+
+Unlike the PMF, which is used for discrete random variables, the Probability Density Function (PDF) is associated with continuous random variables. The PDF describes the relative likelihood of a continuous random variable to take on a specific value. 
+
+### Understanding the PDF
+
+The key distinction to understand is that, for continuous random variables, the probability of taking on any single, exact value is effectively zero, as there are infinitely many possible values. Therefore, the PDF does not directly give us a probability for a single value. Instead, it helps us understand the distribution of probabilities across a range of values. 
+
+
+
+### Example: PDF of a Normal Distribution
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.stats import norm
+
+# PDF of a standard normal distribution
+x = np.linspace(-3, 3, 1000)
+y = norm.pdf(x, 0, 1)
+
+plt.plot(x, y)
+plt.title('PDF of Standard Normal Distribution')
+plt.xlabel('Value')
+plt.ylabel('Density')
+plt.show()
+```
+
+## Conclusion
+
+Understanding the concepts of random variables and probability function are essential in the field of machine learning and data science. The PMF, PDF, CDF functions provide fundamental insights into the behavior of random variables. 

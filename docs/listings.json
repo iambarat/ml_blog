@@ -2,10 +2,11 @@
   {
     "listing": "/index.html",
     "items": [
-      "/posts/classification/index.html",
       "/posts/random_variable/index.html",
+      "/posts/clustering/index.html",
       "/posts/regression/index.html",
-      "/posts/clustering/index.html"
+      "/posts/classification/index.html",
+      "/posts/ids/index.html"
     ]
   }
 ]

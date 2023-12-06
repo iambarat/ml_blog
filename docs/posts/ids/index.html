@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Your Name">
-<meta name="dcterms.date" content="2023-12-02">
+<meta name="author" content="Mohaimin">
+<meta name="dcterms.date" content="2023-12-04">
 
-<title>Machine Learning Blog - Understanding Clustering in Machine Learning</title>
+<title>Machine Learning Blog - Anomaly Detection</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -96,8 +96,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -144,7 +142,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Understanding Clustering in Machine Learning</h1>
+      <h1 class="title">Anomaly Detection</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">code</div>
               </div>
@@ -157,14 +155,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Author</div>
       <div class="quarto-title-meta-contents">
-               <p>Your Name </p>
+               <p>Mohaimin </p>
             </div>
     </div>
       
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">December 2, 2023</p>
+        <p class="date">December 4, 2023</p>
       </div>
     </div>
     
@@ -184,67 +182,102 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>Clustering is a fundamental technique in machine learning, often used in data analysis for pattern recognition and grouping similar data points. In this blog post, we’ll explore the basics of clustering, delve into some common algorithms, and provide Python examples to illustrate these concepts in practice.</p>
-<section id="what-is-clustering" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-clustering">What is Clustering?</h2>
-<p>Clustering is an unsupervised learning technique used to group a set of objects in such a way that objects in the same group (a cluster) are more similar to each other than to those in other groups.</p>
-<section id="key-concepts" class="level3">
-<h3 class="anchored" data-anchor-id="key-concepts">Key Concepts</h3>
-<ul>
-<li><strong>Cluster</strong>: A collection of data points aggregated together because of certain similarities.</li>
-<li><strong>Centroid</strong>: The central point of a cluster. Not all clustering algorithms use centroids.</li>
-</ul>
-</section>
-</section>
-<section id="common-clustering-algorithms" class="level2">
-<h2 class="anchored" data-anchor-id="common-clustering-algorithms">Common Clustering Algorithms</h2>
+<p>Anomaly detection, also known as outlier detection, is a fascinating area of machine learning aimed at identifying abnormal patterns that do not conform to expected behavior. These anomalies can be crucial in various domains like fraud detection, system health monitoring, and outlier detection in data cleaning and preprocessing.</p>
+<p>In this blog, we’ll dive deep into the world of anomaly detection, exploring its concepts, methodologies, and implementation using Python.</p>
+<section id="fundamentals-of-anomaly-detection" class="level2">
+<h2 class="anchored" data-anchor-id="fundamentals-of-anomaly-detection">Fundamentals of Anomaly Detection</h2>
+<p>Anomaly detection focuses on identifying data points, events, or observations that deviate significantly from the dataset’s norm. Mathematically, if we consider a dataset ( D ) containing elements ( x_1, x_2, …, x_n ), an anomaly ( x_i ) is a point that deviates significantly from the majority of points in ( D ).</p>
+<section id="types-of-anomalies" class="level3">
+<h3 class="anchored" data-anchor-id="types-of-anomalies">Types of Anomalies</h3>
 <ol type="1">
-<li><strong>K-Means Clustering</strong>: Groups data into (k) number of clusters.</li>
-<li><strong>Hierarchical Clustering</strong>: Builds a hierarchy of clusters using a tree-like structure.</li>
+<li><strong>Point Anomalies</strong>: Single data points that are far from the rest of the data.</li>
+<li><strong>Contextual Anomalies</strong>: Abnormalities in a specific context but not otherwise.</li>
+<li><strong>Collective Anomalies</strong>: A collection of data points that are anomalous in relation to the entire dataset.</li>
 </ol>
 </section>
-<section id="k-means-clustering" class="level2">
-<h2 class="anchored" data-anchor-id="k-means-clustering">K-Means Clustering</h2>
-<section id="the-mathematical-model" class="level3">
-<h3 class="anchored" data-anchor-id="the-mathematical-model">The Mathematical Model</h3>
-<p>The goal of K-means is to minimize the within-cluster variance, defined as:</p>
-<p><span class="math display">\[ W(C_k) = \sum_{x_i \in C_k} ||x_i - \mu_k||^2 \]</span></p>
-<p>where $ C_k $ is the (k)th cluster, <span class="math inline">\(x_i\)</span> is a data point, and $ _k $ is the centroid of $ C_k $.</p>
 </section>
-<section id="python-example-implementing-k-means-using-iris-dataset" class="level3">
-<h3 class="anchored" data-anchor-id="python-example-implementing-k-means-using-iris-dataset">Python Example: Implementing K-Means using Iris dataset</h3>
+<section id="implementing-anomaly-detection-in-python" class="level2">
+<h2 class="anchored" data-anchor-id="implementing-anomaly-detection-in-python">Implementing Anomaly Detection in Python</h2>
+<p>We’ll use the <code>scikit-learn</code> library in Python to demonstrate anomaly detection. Ensure you have it installed:</p>
+<pre class="{bash}"><code>pip install scikit-learn</code></pre>
+<p>We’ll use a simple dataset and Isolation Forest algorithm to detect anomaly for this example.</p>
 <div class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn <span class="im">import</span> datasets</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> KMeans</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the iris dataset</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>iris <span class="op">=</span> datasets.load_iris()</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>X_iris <span class="op">=</span> iris.data[:, :<span class="dv">2</span>]  <span class="co"># We only take the first two features for simplicity</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># KMeans clustering</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>kmeans_iris <span class="op">=</span> KMeans(n_clusters<span class="op">=</span><span class="dv">2</span>, random_state<span class="op">=</span><span class="dv">0</span>).fit(X_iris)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting the clusters</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>plt.scatter(X_iris[:, <span class="dv">0</span>], X_iris[:, <span class="dv">1</span>], c<span class="op">=</span>kmeans_iris.labels_, cmap<span class="op">=</span><span class="st">'rainbow'</span>)</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'K-Means Clustering on Iris Dataset'</span>)</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Sepal Length'</span>)</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Sepal Width'</span>)</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/sklearn/cluster/_kmeans.py:1416: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
-  super()._check_params_vs_input(X, default_n_init=10)</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> IsolationForest</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Generating sample data</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.RandomState(<span class="dv">42</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> <span class="fl">0.3</span> <span class="op">*</span> rng.randn(<span class="dv">100</span>, <span class="dv">2</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>X_train <span class="op">=</span> np.r_[X <span class="op">+</span> <span class="dv">2</span>, X <span class="op">-</span> <span class="dv">2</span>]</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding outliers</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>X_outliers <span class="op">=</span> rng.uniform(low<span class="op">=-</span><span class="dv">4</span>, high<span class="op">=</span><span class="dv">4</span>, size<span class="op">=</span>(<span class="dv">20</span>, <span class="dv">2</span>))</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>X_train <span class="op">=</span> np.r_[X_train, X_outliers]</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Fitting the model</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> IsolationForest(max_samples<span class="op">=</span><span class="dv">100</span>, random_state<span class="op">=</span>rng)</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>clf.fit(X_train)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Predictions</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>y_pred_train <span class="op">=</span> clf.predict(X_train)</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizing the data</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>plt.scatter(X_train[:, <span class="dv">0</span>], X_train[:, <span class="dv">1</span>], c<span class="op">=</span>y_pred_train, cmap<span class="op">=</span><span class="st">'Paired'</span>)</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Isolation Forest Anomaly Detection"</span>)</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Feature 1"</span>)</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Feature 2"</span>)</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="index_files/figure-html/cell-2-output-2.png" width="589" height="449"></p>
+<p><img src="index_files/figure-html/cell-2-output-1.png" width="587" height="449"></p>
 </div>
 </div>
-<p>The resulting plot shows how K-Means algorithm clusters the iris flowers based on sepal length and width. You can experiment with different numbers of clusters ‘n_clusters’ and features to see how the clustering changes.</p>
+<p>In this example, the Isolation Forest algorithm efficiently separates the outliers from the normal observations.</p>
+<section id="knn-for-anomaly-detection" class="level3">
+<h3 class="anchored" data-anchor-id="knn-for-anomaly-detection">KNN for anomaly detection</h3>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.neighbors <span class="im">import</span> NearestNeighbors</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating sample data with some anomalies</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">0</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>X_normal <span class="op">=</span> np.random.rand(<span class="dv">100</span>, <span class="dv">2</span>) <span class="op">*</span> <span class="dv">2</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>X_anomaly <span class="op">=</span> np.array([[<span class="dv">3</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">4</span>], [<span class="dv">5</span>, <span class="dv">5</span>]])</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.concatenate([X_normal, X_anomaly], axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Fitting the KNN model</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>knn <span class="op">=</span> NearestNeighbors(n_neighbors<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>knn.fit(X)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Finding the distances and indices of the nearest neighbors</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>distances, indices <span class="op">=</span> knn.kneighbors(X)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Threshold for anomaly (set as a distance that seems to separate normal points from anomalies)</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>threshold <span class="op">=</span> <span class="fl">1.5</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Detecting anomalies</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>is_anomaly <span class="op">=</span> np.<span class="bu">any</span>(distances <span class="op">&gt;</span> threshold, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>plt.scatter(X[is_anomaly, <span class="dv">0</span>], X[is_anomaly, <span class="dv">1</span>], color<span class="op">=</span><span class="st">'red'</span>, label<span class="op">=</span><span class="st">'Anomaly'</span>)</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>plt.scatter(X[<span class="op">~</span>is_anomaly, <span class="dv">0</span>], X[<span class="op">~</span>is_anomaly, <span class="dv">1</span>], color<span class="op">=</span><span class="st">'blue'</span>, label<span class="op">=</span><span class="st">'Normal'</span>)</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'KNN Anomaly Detection'</span>)</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Feature 1'</span>)</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Feature 2'</span>)</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="index_files/figure-html/cell-3-output-1.png" width="799" height="523"></p>
+</div>
+</div>
+<p>In this example, the KNN algorithm efficiently separates the outliers from the normal observations.</p>
 </section>
 </section>
 <section id="conclusion" class="level2">
 <h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>Clustering offers a way to uncover hidden patterns in data, making it a crucial tool in the machine learning toolkit. Python, with its rich ecosystem of libraries, provides an accessible platform for exploring these techniques.</p>
+<p>Anomaly detection is a powerful tool in machine learning, offering significant benefits in various applications. Python’s ‘scikit-learn’ provides accessible and efficient tools to implement these techniques. As with any machine learning task, the key to success lies in understanding your data and choosing the right algorithm for your specific use case.</p>
 
 
 </section>
