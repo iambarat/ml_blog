@@ -186,7 +186,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In this blog, we’ll dive deep into the world of anomaly detection, exploring its concepts, methodologies, and implementation using Python.</p>
 <section id="fundamentals-of-anomaly-detection" class="level2">
 <h2 class="anchored" data-anchor-id="fundamentals-of-anomaly-detection">Fundamentals of Anomaly Detection</h2>
-<p>Anomaly detection focuses on identifying data points, events, or observations that deviate significantly from the dataset’s norm. Mathematically, if we consider a dataset ( D ) containing elements ( x_1, x_2, …, x_n ), an anomaly ( x_i ) is a point that deviates significantly from the majority of points in ( D ).</p>
+<p>Anomaly detection focuses on identifying data points, events, or observations that deviate significantly from the dataset’s norm. Mathematically, if we consider a dataset $ D $ containing elements $ x_1, x_2, …, x_n $, an anomaly $ x_i $ is a point that deviates significantly from the majority of points in $ D $.</p>
 <section id="types-of-anomalies" class="level3">
 <h3 class="anchored" data-anchor-id="types-of-anomalies">Types of Anomalies</h3>
 <ol type="1">
@@ -243,7 +243,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating sample data with some anomalies</span></span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">0</span>)</span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>X_normal <span class="op">=</span> np.random.rand(<span class="dv">100</span>, <span class="dv">2</span>) <span class="op">*</span> <span class="dv">2</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>X_anomaly <span class="op">=</span> np.array([[<span class="dv">3</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">4</span>], [<span class="dv">5</span>, <span class="dv">5</span>]])</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>X_anomaly <span class="op">=</span> np.array([[<span class="dv">3</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">4</span>], [<span class="dv">5</span>, <span class="dv">5</span>], [<span class="fl">2.5</span>, <span class="dv">3</span>], [<span class="dv">3</span>, <span class="fl">2.5</span>]])  <span class="co"># Adding more anomalies</span></span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.concatenate([X_normal, X_anomaly], axis<span class="op">=</span><span class="dv">0</span>)</span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Fitting the KNN model</span></span>
@@ -254,7 +254,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>distances, indices <span class="op">=</span> knn.kneighbors(X)</span>
 <span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Threshold for anomaly (set as a distance that seems to separate normal points from anomalies)</span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>threshold <span class="op">=</span> <span class="fl">1.5</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>threshold <span class="op">=</span> <span class="fl">1.0</span></span>
 <span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Detecting anomalies</span></span>
 <span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>is_anomaly <span class="op">=</span> np.<span class="bu">any</span>(distances <span class="op">&gt;</span> threshold, axis<span class="op">=</span><span class="dv">1</span>)</span>
