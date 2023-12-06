@@ -102,8 +102,6 @@ plt.show()
 ```
 In this example, the KNN algorithm efficiently separates the outliers from the normal observations.
 
-
-
 ## Conclusion
 
 Anomaly detection is a powerful tool in machine learning, offering significant benefits in various applications. Python's 'scikit-learn' provides accessible and efficient tools to implement these techniques. As with any machine learning task, the key to success lies in understanding your data and choosing the right algorithm for your specific use case.
