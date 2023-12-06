@@ -3,7 +3,7 @@ title: "Understanding Classification"
 author: "Mohaimin"
 date: "2023-12-03"
 format: html
-categories: [code]
+categories: [classification]
 ---
 
 # Introduction to Classification in Machine Learning

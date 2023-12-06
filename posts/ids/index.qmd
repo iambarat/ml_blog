@@ -3,7 +3,7 @@ title: "Anomaly Detection"
 author: "Mohaimin"
 date: "2023-12-04"
 format: html
-categories: [code]
+categories: [machine learning, anomaly detection]
 ---
 
 # Introduction

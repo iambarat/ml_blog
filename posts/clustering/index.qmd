@@ -1,9 +1,9 @@
 ---
 title: "Understanding Clustering in Machine Learning"
-author: "Your Name"
+author: "Mohaimin"
 date: "2023-12-02"
 format: html
-categories: [code]
+categories: [clustering, machine learning]
 ---
 
 # Introduction

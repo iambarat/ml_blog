@@ -4,6 +4,8 @@ project:
 
 website:
   title: "Machine Learning Blog"
+  repo-url: https://github.com/iambarat/ml_blog/tree/main/posts
+  repo-actions: [source]
   navbar:
     right:
       - about.qmd
@@ -11,10 +13,10 @@ website:
         href: https://github.com/iambarat
       - icon: twitter
         href: https://twitter.com/iambota_
+  
 format:
   html:
     theme: solar
     css: styles.css
-
 editor: visual
 

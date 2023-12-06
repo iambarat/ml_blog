@@ -2,7 +2,7 @@
 title: "Random Variables and Probability Distribution"
 author: "Mohaimin"
 date: "2023-12-01"
-categories: [code]
+categories: [probability]
 ---
 
 # Random Variables and Probability Distribution

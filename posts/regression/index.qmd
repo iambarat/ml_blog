@@ -3,7 +3,7 @@ title: "Exploring Linear and Non-Linear Regression"
 author: "Mohaimin"
 date: "2023-12-02"
 format: html
-categories: [code]
+categories: [regression]
 ---
 
 
