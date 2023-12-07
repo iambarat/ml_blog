@@ -30,63 +30,101 @@ As a supervised learning technique, classification relies on labeled input data.
 
 We'll use the Iris dataset, a classic in machine learning, which includes data on various iris flowers and classifies them into three species.
 
+<!--
+```{r}
+library(reticulate)
+use_python("/Users/bota/Files/VT/Course Materials/Fall 23/ML Blog/vscode/mlblog/bin/python")
+```
+-->
+
 ```{python}
-#loading dataset
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
 from sklearn.datasets import load_iris
-iris = load_iris()
-
-#splitting dataset
 from sklearn.model_selection import train_test_split
-X_train, X_test, y_train, y_test = train_test_split(
-    iris.data, iris.target, test_size=0.3, random_state=42)
-
-#knn
-from sklearn.neighbors import KNeighborsClassifier
-knn = KNeighborsClassifier(n_neighbors=3)
-knn.fit(X_train, y_train)
-
-#knn_evaluation
-from sklearn.metrics import accuracy_score
-y_pred = knn.predict(X_test)
-accuracy = accuracy_score(y_test, y_pred)
-print(f"Accuracy: {accuracy:.2f}")
-
-
-### Decision Tree Classifier
-
+from sklearn.metrics import confusion_matrix, accuracy_score
+from sklearn.linear_model import LogisticRegression
 from sklearn.tree import DecisionTreeClassifier
-
-decision_tree = DecisionTreeClassifier()
-decision_tree.fit(X_train, y_train)
-
-#evaluation
-y_pred_dt = decision_tree.predict(X_test)
-accuracy_dt = accuracy_score(y_test, y_pred_dt)
-print(f"Decision Tree Accuracy: {accuracy_dt:.2f}")
-
-#support vector machine classifier
 from sklearn.svm import SVC
+from sklearn.neighbors import KNeighborsClassifier
 
-#training
-svm = SVC()
-svm.fit(X_train, y_train)
+# Load Iris dataset
+iris = load_iris()
+X = iris.data
+y = iris.target
 
-#evaluating
-y_pred_svm = svm.predict(X_test)
+# For simplicity, using only two classes
+X, y = X[y != 2], y[y != 2]
+
+# Split the data into training and test sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+# Logistic Regression Classifier
+clf_lr = LogisticRegression()
+clf_lr.fit(X_train, y_train)
+y_pred_lr = clf_lr.predict(X_test)
+cm_lr = confusion_matrix(y_test, y_pred_lr)
+accuracy_lr = accuracy_score(y_test, y_pred_lr)
+
+# Decision Tree Classifier
+clf_dt = DecisionTreeClassifier()
+clf_dt.fit(X_train, y_train)
+y_pred_dt = clf_dt.predict(X_test)
+cm_dt = confusion_matrix(y_test, y_pred_dt)
+accuracy_dt = accuracy_score(y_test, y_pred_dt)
+
+# SVM Classifier
+clf_svm = SVC(probability=True)
+clf_svm.fit(X_train, y_train)
+y_pred_svm = clf_svm.predict(X_test)
+cm_svm = confusion_matrix(y_test, y_pred_svm)
 accuracy_svm = accuracy_score(y_test, y_pred_svm)
-print(f"SVM Accuracy: {accuracy_svm:.2f}")
 
+# KNN Classifier
+clf_knn = KNeighborsClassifier(n_neighbors=3)
+clf_knn.fit(X_train, y_train)
+y_pred_knn = clf_knn.predict(X_test)
+cm_knn = confusion_matrix(y_test, y_pred_knn)
+accuracy_knn = accuracy_score(y_test, y_pred_knn)
+
+# Plotting Confusion Matrices for all classifiers
+fig, axes = plt.subplots(2, 2, figsize=(12, 12))
 
 # Logistic Regression
-from sklearn.linear_model import LogisticRegression
+sns.heatmap(cm_lr, annot=True, fmt="d", cmap="Blues", ax=axes[0, 0])
+axes[0, 0].set_title('Logistic Regression Confusion Matrix')
+axes[0, 0].set_xlabel('Predicted Label')
+axes[0, 0].set_ylabel('True Label')
 
-log_reg = LogisticRegression(max_iter=200)
-log_reg.fit(X_train, y_train)
+# Decision Tree
+sns.heatmap(cm_dt, annot=True, fmt="d", cmap="Blues", ax=axes[0, 1])
+axes[0, 1].set_title('Decision Tree Confusion Matrix')
+axes[0, 1].set_xlabel('Predicted Label')
+axes[0, 1].set_ylabel('True Label')
 
-# Evaluating
-y_pred_lr = log_reg.predict(X_test)
-accuracy_lr = accuracy_score(y_test, y_pred_lr)
-print(f"Logistic Regression Accuracy: {accuracy_lr:.2f}")
+# SVM
+sns.heatmap(cm_svm, annot=True, fmt="d", cmap="Blues", ax=axes[1, 0])
+axes[1, 0].set_title('SVM Confusion Matrix')
+axes[1, 0].set_xlabel('Predicted Label')
+axes[1, 0].set_ylabel('True Label')
+
+# KNN
+sns.heatmap(cm_knn, annot=True, fmt="d", cmap="Blues", ax=axes[1, 1])
+axes[1, 1].set_title('KNN Confusion Matrix')
+axes[1, 1].set_xlabel('Predicted Label')
+axes[1, 1].set_ylabel('True Label')
+
+plt.tight_layout()
+plt.show()
+
+# Printing accuracies
+print("Accuracy of Logistic Regression: {:.2f}%".format(accuracy_lr * 100))
+print("Accuracy of Decision Tree: {:.2f}%".format(accuracy_dt * 100))
+print("Accuracy of SVM: {:.2f}%".format(accuracy_svm * 100))
+print("Accuracy of KNN: {:.2f}%".format(accuracy_knn * 100))
+
+
 ```
 
 ### Conclusion
